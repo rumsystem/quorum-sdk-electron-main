@@ -25,7 +25,7 @@ const Quorum = require('quorum-sdk-electron-main');
 Quorum.init();
 ```
 
-## Setup for Electron Building
+## Setup for Electron building
 
 In package.json, add `extraResources` config for adding quorum binary to electron app when packaging:
 
@@ -67,4 +67,4 @@ In package.json, add `extraResources` config for adding quorum binary to electro
 
 ## Final
 
-You have installing and setup quorum server in main process, for the next step, your can go to setup [Quorum-sdk-electron-renderer](https://bitbucket.org/pressone/quorum-sdk-electron-renderer) and interact with this quorum server.
+You have installing and setup quorum server in main process. Next step, your can go to setup [Quorum-sdk-electron-renderer](https://bitbucket.org/pressone/quorum-sdk-electron-renderer) and interact with this quorum server.
