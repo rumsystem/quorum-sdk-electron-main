@@ -37,19 +37,28 @@ In package.json, add `extraResources` config for adding quorum binary to electro
     "mac": {
       ...
       "extraResources": [
-        "./node_modules/quorum-sdk-electron-main/quorum_bin/quorum_darwin"
+        {
+          "from": "node_modules/quorum-sdk-electron-main/quorum_bin/quorum_darwin",
+          "to": "quorum_bin/quorum_darwin"
+        }
       ]
     },
     "win": {
       ...
       "extraResources": [
-        "./node_modules/quorum-sdk-electron-main/quorum_bin/quorum_win.exe"
+        {
+          "from": "node_modules/quorum-sdk-electron-main/quorum_bin/quorum_win.exe",
+          "to": "quorum_bin/quorum_win.exe"
+        }
       ]
     },
     "linux": {
       ...
       "extraResources": [
-        "./node_modules/quorum-sdk-electron-main/quorum_bin/quorum_linux"
+        {
+          "from": "node_modules/quorum-sdk-electron-main/quorum_bin/quorum_linux",
+          "to": "quorum_bin/quorum_linux"
+        }
       ]
     }
   }
