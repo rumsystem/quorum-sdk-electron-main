@@ -11,8 +11,6 @@ const store = new ElectronStore({
   name: 'quorum_port_store',
 });
 
-const isDevelopment = process.env.NODE_ENV === 'development';
-const isProduction = !isDevelopment;
 let quorumBaseDir = '';
 
 const state = {
@@ -158,15 +156,15 @@ const actions = {
 
 const init = async (options = {}) => {
   try {
-
     quorumBaseDir = path.join(
-      options.nodeModulesParentPath || (isProduction ? process.resourcesPath : app.getAppPath()),
-      options.quorumBinPath || (isProduction ? 'quorum_bin' : 'node_modules/quorum-sdk-electron-main/quorum_bin'),
+      options.nodeModulesParentPath || (app.isPackaged ? process.resourcesPath : __dirname),
+      'quorum_bin',
     );
+
+    console.log({ quorumBaseDir });
 
     const certDir = path.join(quorumBaseDir, 'certs');
     const certPath = path.join(quorumBaseDir, 'certs/server.crt');
-
 
     await fs.promises.mkdir(quorumBaseDir).catch((e) => {
       if (e.code === 'EEXIST') {
@@ -182,8 +180,6 @@ const init = async (options = {}) => {
       }
       console.error(e);
     });
-
-
 
     const loadCert = async () => {
       try {
