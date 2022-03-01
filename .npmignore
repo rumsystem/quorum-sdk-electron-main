@@ -4,3 +4,4 @@ quorum_bin/config
 quorum_bin/data
 quorum
 yarn.lock
+scripts
