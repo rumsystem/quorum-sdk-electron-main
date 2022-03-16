@@ -11,7 +11,7 @@ const store = new ElectronStore({
   name: 'quorum_port_store',
 });
 
-let quorumBaseDir = '';
+let quorumBinPath = '';
 
 const state = {
   process: null,
@@ -53,7 +53,7 @@ const actions = {
           '/ip4/94.23.17.189/tcp/10666/p2p/16Uiu2HAmGTcDnhj3KVQUwVx8SGLyKBXQwfAxNayJdEwfsnUYKK4u',
           '/ip4/132.145.109.63/tcp/10666/p2p/16Uiu2HAmTovb8kAJiYK8saskzz7cRQhb45NRK5AsbtdmYsLfD3RM',
         ],
-        storagePath = path.join(quorumBaseDir, 'data'),
+        storagePath = path.join(quorumBinPath, 'data'),
         password = '123123'
       } = param;
 
@@ -83,7 +83,7 @@ const actions = {
       ];
 
       // ensure config dir
-      await fs.promises.mkdir(path.join(quorumBaseDir, 'config')).catch((e) => {
+      await fs.promises.mkdir(path.join(quorumBinPath, 'config')).catch((e) => {
         if (e.code === 'EEXIST') {
           return;
         }
@@ -107,12 +107,12 @@ const actions = {
         win32: 'quorum_win.exe',
       };
       const cmd = path.join(
-        quorumBaseDir,
+        quorumBinPath,
         quorumFileName[process.platform],
       );
 
       const peerProcess = childProcess.spawn(cmd, args, {
-        cwd: quorumBaseDir,
+        cwd: quorumBinPath,
         env: { ...process.env, RUM_KSPASSWD: password },
       });
 
@@ -156,17 +156,14 @@ const actions = {
 
 const init = async (options = {}) => {
   try {
-    quorumBaseDir = path.join(
-      options.nodeModulesParentPath || (app.isPackaged ? process.resourcesPath : __dirname),
-      'quorum_bin',
-    );
+    quorumBinPath = options.quorumBinPath;
 
-    console.log({ quorumBaseDir });
+    console.log({ quorumBinPath });
 
-    const certDir = path.join(quorumBaseDir, 'certs');
-    const certPath = path.join(quorumBaseDir, 'certs/server.crt');
+    const certDir = path.join(quorumBinPath, 'certs');
+    const certPath = path.join(quorumBinPath, 'certs/server.crt');
 
-    await fs.promises.mkdir(quorumBaseDir).catch((e) => {
+    await fs.promises.mkdir(quorumBinPath).catch((e) => {
       if (e.code === 'EEXIST') {
         return;
       }

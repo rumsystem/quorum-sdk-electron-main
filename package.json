@@ -1,15 +1,14 @@
 {
   "name": "quorum-sdk-electron-main",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "build:quorum": "git submodule update --init && git submodule foreach git pull origin main && ./scripts/build_quorum.sh"
-  },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "electron": "16.0.8"
+  },
   "dependencies": {
-    "electron": "16.0.8",
     "electron-store": "^8.0.1",
     "electron-log": "^4.4.6",
     "get-port": "^5.1.1",

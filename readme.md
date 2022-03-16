@@ -12,6 +12,7 @@ Quorum-sdk includes two npm packages:
 ## Install
 
 ```
+$ yarn add quorum-bin -D
 $ yarn add quorum-sdk-electron-main
 ```
 
@@ -20,9 +21,13 @@ $ yarn add quorum-sdk-electron-main
 In Electron main.js
 
 ```js
+const { app } = require('electron');
 const Quorum = require('quorum-sdk-electron-main');
 
-Quorum.init();
+Quorum.init({
+	quorumBinPath: app.isPackaged ?
+    `${process.resourcesPath}/quorum-bin` : `${__dirname}/node_modules/quorum-bin`,
+});
 ```
 
 ## Setup for Electron building
@@ -38,7 +43,7 @@ In package.json, add `extraResources` config for adding quorum binary to electro
       ...
       "extraResources": [
         {
-          "from": "node_modules/quorum-sdk-electron-main/quorum_bin/quorum_darwin",
+          "from": "node_modules/quorum_bin/quorum_darwin",
           "to": "quorum_bin/quorum_darwin"
         }
       ]
@@ -47,7 +52,7 @@ In package.json, add `extraResources` config for adding quorum binary to electro
       ...
       "extraResources": [
         {
-          "from": "node_modules/quorum-sdk-electron-main/quorum_bin/quorum_win.exe",
+          "from": "node_modules/quorum_bin/quorum_win.exe",
           "to": "quorum_bin/quorum_win.exe"
         }
       ]
@@ -56,7 +61,7 @@ In package.json, add `extraResources` config for adding quorum binary to electro
       ...
       "extraResources": [
         {
-          "from": "node_modules/quorum-sdk-electron-main/quorum_bin/quorum_linux",
+          "from": "node_modules/quorum_bin/quorum_linux",
           "to": "quorum_bin/quorum_linux"
         }
       ]
