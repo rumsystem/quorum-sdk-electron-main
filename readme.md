@@ -43,8 +43,8 @@ In package.json, add `extraResources` config for adding quorum binary to electro
       ...
       "extraResources": [
         {
-          "from": "node_modules/quorum_bin/quorum_darwin",
-          "to": "quorum_bin/quorum_darwin"
+          "from": "node_modules/quorum-bin/quorum_darwin",
+          "to": "quorum-bin/quorum_darwin"
         }
       ]
     },
@@ -52,8 +52,8 @@ In package.json, add `extraResources` config for adding quorum binary to electro
       ...
       "extraResources": [
         {
-          "from": "node_modules/quorum_bin/quorum_win.exe",
-          "to": "quorum_bin/quorum_win.exe"
+          "from": "node_modules/quorum-bin/quorum_win.exe",
+          "to": "quorum-bin/quorum_win.exe"
         }
       ]
     },
@@ -61,8 +61,8 @@ In package.json, add `extraResources` config for adding quorum binary to electro
       ...
       "extraResources": [
         {
-          "from": "node_modules/quorum_bin/quorum_linux",
-          "to": "quorum_bin/quorum_linux"
+          "from": "node_modules/quorum-bin/quorum_linux",
+          "to": "quorum-bin/quorum_linux"
         }
       ]
     }
