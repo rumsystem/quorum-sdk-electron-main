@@ -25,8 +25,8 @@ const { app } = require('electron');
 const Quorum = require('quorum-sdk-electron-main');
 
 Quorum.init({
-	quorumBinPath: app.isPackaged ?
-    `${process.resourcesPath}/quorum-bin` : `${__dirname}/node_modules/quorum-bin`,
+	quorumBinPath: app.isPackaged
+        ? `${process.resourcesPath}/quorum-bin` : `${__dirname}/node_modules/quorum-bin`,
 });
 ```
 
