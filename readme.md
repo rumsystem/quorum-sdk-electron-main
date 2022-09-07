@@ -70,6 +70,10 @@ In package.json, add `extraResources` config for adding quorum binary to electro
 }
 ```
 
+## Notice
+
+Setup & Setup for Electron building step maybe different due to the scaffolding of you electron project use, a specfic project setting is (here)[https://github.com/rumsystem/quorum-sdk-electron-main/issues/1]
+
 ## Final
 
 You have installing and setup quorum server in main process. Next step, your can go to setup [Quorum-sdk-electron-renderer](https://bitbucket.org/pressone/quorum-sdk-electron-renderer) and interact with this quorum server.
